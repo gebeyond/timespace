@@ -227,3 +227,17 @@ test('check higher zoom levels', function(t) {
 
   t.end();
 });
+
+test('check zone at bullhead city', function(t) {
+    var timestamp = Date.now();
+    var point = [-114.525379, 35.137396];
+
+    if (z === 8) {
+        var expected = moment.tz(new Date(timestamp), 'America/Phoenix');
+        t.equal(ts.getFuzzyLocalTimeFromPoint(timestamp, point).tz(), expected.tz());
+    } else {
+        t.true(ts.getFuzzyLocalTimeFromPoint(timestamp, point)._z.name.indexOf('/') > 0);
+    }
+
+    t.end();
+});
