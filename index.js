@@ -1,4 +1,7 @@
-var tiles = require('./lib/timezones.json');
+var tiles = Object.assign(
+    require('./lib/timezones.json'),
+    require('./lib/timezones-corrected.json')
+);
 var tilebelt = require('@mapbox/tilebelt');
 var moment = require('moment-timezone');
 var ss = require('simple-statistics');
